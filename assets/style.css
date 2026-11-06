@@ -1,0 +1,166 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #263445;
+    padding: 35px;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 28px;
+    color: #243b53;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #718096;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.search-form {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+input,
+textarea {
+    padding: 11px 13px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.search-form input {
+    width: 260px;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #3182ce;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background-color: #3182ce;
+}
+
+.btn-success {
+    background-color: #25855a;
+}
+
+.btn-secondary {
+    background-color: #718096;
+}
+
+.btn-edit {
+    background-color: #d69e36;
+}
+
+.btn-delete {
+    background-color: #d64545;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+.result-info {
+    font-size: 13px;
+    color: #718096;
+    margin-bottom: 12px;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1050px;
+}
+
+th {
+    background-color: #243b53;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-size: 13px;
+}
+
+td {
+    padding: 14px 15px;
+    border-bottom: 1px solid #e8edf2;
+    font-size: 13px;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+.action-cell {
+    white-space: nowrap;
+}
+
+.empty-data {
+    text-align: center;
+    color: #718096;
+    padding: 25px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 18px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    .search-form input {
+        width: 100%;
+    }
+}
