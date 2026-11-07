@@ -1,17 +1,6 @@
 
 <?php
-require_once '../config/database.php';
-
-try {
-    $query = $pdo->query(
-        "SELECT * FROM produk ORDER BY kode_produk ASC"
-    );
-
-    $produk = $query->fetchAll();
-
-} catch (PDOException $e) {
-    die("Gagal mengambil data produk: " . $e->getMessage());
-}
+$pageTitle = "Dashboard PHP Native";
 ?>
 
 <!DOCTYPE html>
@@ -19,86 +8,106 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Produk - PHP Native</title>
+    <title><?= $pageTitle ?></title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        .dashboard {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
 
-    <link rel="stylesheet" href="../assets/style.css">
+        .dashboard-header {
+            margin-bottom: 30px;
+        }
+
+        .dashboard-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-card {
+            display: block;
+            padding: 24px;
+            background: white;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #222;
+            border: 1px solid #e5e5e5;
+            transition: 0.2s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+        }
+
+        .menu-card h3 {
+            margin-top: 0;
+            color: #2457a6;
+        }
+
+        .menu-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .dashboard-footer {
+            margin-top: 35px;
+            color: #777;
+            font-size: 13px;
+        }
+    </style>
 </head>
-
 <body>
 
-    <div class="container">
-
-        <h1>Data Produk</h1>
-
-        <p class="subtitle">
-            Daftar seluruh produk yang tersimpan dalam database.
+<div class="dashboard">
+    <div class="dashboard-header">
+        <h1>Aplikasi Transaksi PHP Native</h1>
+        <p>
+            Praktikum Basis Data Lanjut — Pengelolaan Produk,
+            Laporan Penjualan, dan Transaksi Database.
         </p>
+    </div>
 
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Kode Produk</th>
-                        <th>Nama Produk</th>
-                        <th>Satuan</th>
-                        <th>Harga Jual</th>
-                        <th>Harga Beli</th>
-                        <th>Stok</th>
-                        <th>Deskripsi</th>
-                    </tr>
-                </thead>
+    <div class="menu-grid">
 
-                <tbody>
+        <a href="produk/index.php" class="menu-card">
+            <h3>Data Produk</h3>
+            <p>Melihat, menambahkan, mengubah, menghapus, dan mencari data produk.</p>
+        </a>
 
-                    <?php if (count($produk) > 0): ?>
+        <a href="laporan/penjualan.php" class="menu-card">
+            <h3>Data Penjualan</h3>
+            <p>Melihat data penjualan beserta nama pelanggan menggunakan JOIN.</p>
+        </a>
 
-                        <?php foreach ($produk as $item): ?>
-                            <tr>
-                                <td>
-                                    <?= htmlspecialchars($item['kode_produk']) ?>
-                                </td>
+        <a href="laporan/agregasi_pelanggan.php" class="menu-card">
+            <h3>Agregasi Pelanggan</h3>
+            <p>Melihat jumlah transaksi dan total pembelian setiap pelanggan.</p>
+        </a>
 
-                                <td>
-                                    <?= htmlspecialchars($item['nama_produk']) ?>
-                                </td>
+        <a href="laporan/penjualan_produk.php" class="menu-card">
+            <h3>Laporan Penjualan Produk</h3>
+            <p>Melihat jumlah produk terjual dan nilai penjualannya.</p>
+        </a>
 
-                                <td>
-                                    <?= htmlspecialchars($item['satuan']) ?>
-                                </td>
-
-                                <td>
-                                    Rp <?= number_format((float)$item['harga_jual'], 0, ',', '.') ?>
-                                </td>
-
-                                <td>
-                                    Rp <?= number_format((float)$item['harga_beli'], 0, ',', '.') ?>
-                                </td>
-
-                                <td>
-                                    <?= htmlspecialchars((string)$item['stok']) ?>
-                                </td>
-
-                                <td>
-                                    <?= htmlspecialchars($item['deskripsi'] ?? '-') ?>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-
-                    <?php else: ?>
-
-                        <tr>
-                            <td colspan="7" class="empty-data">
-                                Belum ada data produk.
-                            </td>
-                        </tr>
-
-                    <?php endif; ?>
-
-                </tbody>
-            </table>
-        </div>
+        <a href="transaksi/index.php" class="menu-card">
+            <h3>Transaksi Baru</h3>
+            <p>Membuat transaksi dengan pengujian COMMIT dan ROLLBACK.</p>
+        </a>
 
     </div>
+
+    <div class="dashboard-footer">
+        <p>Praktikum Basis Data Lanjut | PHP Native dengan PDO dan PostgreSQL</p>
+    </div>
+</div>
 
 </body>
 </html>

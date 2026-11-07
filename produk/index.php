@@ -35,6 +35,10 @@ $produk = $stmt->fetchAll();
 
 <div class="container">
 
+    <a href="../index.php" class="btn btn-secondary">
+        &larr; Kembali ke Beranda
+    </a>
+
     <h1>Data Produk</h1>
     <p class="subtitle">
         Kelola dan cari data produk yang tersimpan dalam database.
