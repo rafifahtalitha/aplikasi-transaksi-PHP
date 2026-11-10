@@ -4,7 +4,7 @@ $host = 'localhost';
 $port = '5432';
 $dbname = 'db_praktikum_transaksi';
 $username = 'postgres';
-$password = 'akucantik28'; // Sesuaikan dengan password PostgreSQL milikmu
+$password = 'akucantik28'; // Isi password PostgreSQL lokal, jangan unggah ke GitHub
 
 try {
     $pdo = new PDO(
